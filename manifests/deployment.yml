@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "wemeter"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "wemeter"
+    spec:
+      containers:
+        - name: "wemeter"
+          image: "wemetercontainerregistry.azurecr.io/wemeter"
+          ports:
+          - containerPort: 80
