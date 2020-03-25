@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: test-worker
+  template:
+    metadata:
+      labels:
+        component: test-worker
+    spec:
+      containers:
+        - name: test-worker
+          image: wemeter/test-worker
+          env:
+            - name: REDIS_HOST
+              value: redis-ip-service
+            - name: REDIS_PORT
+              value: "6379"
